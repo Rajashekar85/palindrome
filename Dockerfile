@@ -1,6 +1,6 @@
 FROM maven:amazoncorretto as build
 WORKDIR /app
-COPY /palindrome .
+COPY . .
 RUN mvn clean install
 
 FROM openjdk:9
