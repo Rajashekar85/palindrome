@@ -1,7 +1,8 @@
-FROM openjdk:19-jdk-alpine3.16
-WORKDIR /javaapp 
-COPY . .
+FROM maven:amazoncorretto as build
+WORKDIR /app
+COPY /palindrome .
 RUN mvn clean install
-ADD /javaapp/target/JacocoExample-0.0.1-SNAPSHOT.jar /javaapp/app.jar
-EXPOSE 100
-CMD ["java", "-jar", "app.jar"]
+
+FROM openjdk:9
+COPY --from=build /app/target/*.jar /app/app.jar
+CMD ["java", "-jar", "/app/app.jar"]
