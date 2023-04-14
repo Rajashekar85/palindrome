@@ -6,7 +6,7 @@ pipeline{
     stages {
         stage('checkout') {
             steps {
-            git branch: 'feature', url: 'https://github.com/Rajashekar85/palindrome.git'
+            git branch: 'main', url: 'https://github.com/Rajashekar85/palindrome.git'
             }
         }
 
